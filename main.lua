@@ -76,7 +76,7 @@ function zh()
     gg.clearResults()
 ]]
     for i, sj in ipairs(nr) do
-        local z = cs.sy 和 sj.ysz or cs.xg or sj.ysz
+        local z = cs.sy and sj.ysz or cs.xg or sj.ysz
         local zs = ""
         if cs.tj then
             zs = string.format(" -- 基址%d: %s", i, sj.mk)
@@ -106,11 +106,11 @@ function src(nr)
     return function(z)
         if not z then return end
         local cs = {
-            xg = z[1] ~= "" 和 tonumber(z[1]),
+            xg = z[1] ~= "" and tonumber(z[1]),
             dj = z[2] == "1",
             tj = z[3] == "1",
             sy = z[4] == "1",
-            dc = z[5] ~= "" 和 z[5] or "基址修改.lua"
+            dc = z[5] ~= "" and z[5] or "基址修改.lua"
         }
         local jb = sc(nr, cs)
         local lj = gg.getFile():gsub('/[^/]+$', '/') .. cs.dc
